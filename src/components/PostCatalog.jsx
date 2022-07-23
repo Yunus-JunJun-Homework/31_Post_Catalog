@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import SinglePost from './SinglePost';
+import React, { useState, useEffect } from "react";
+import SinglePost from "./SinglePost";
+
+const getUrlPosts = "https://jsonplaceholder.typicode.com/posts";
 
 const PostCatalog = () => {
-  const getUrlPosts = 'https://jsonplaceholder.typicode.com/posts';
-
   const [listPosts, setListPosts] = useState([]);
 
   useEffect(() => {
@@ -12,8 +12,6 @@ const PostCatalog = () => {
       const data = await response.json();
       setListPosts(data);
     };
-
-    // Вова почему PhpStorm жалуется на getPosts() вызов ниже?? я так думаю что и за Promise??
     getPosts();
   }, []);
 
@@ -25,7 +23,9 @@ const PostCatalog = () => {
 
   return (
     <div className="posts">
-      <ul style={{listStyle: "none", marginTop:10}} className="posts_list">{renderListPosts()}</ul>
+      <ul style={{ listStyle: "none", marginTop: 10 }} className="posts_list">
+        {renderListPosts()}
+      </ul>
     </div>
   );
 };
